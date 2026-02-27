@@ -1,0 +1,55 @@
+/* Center the board on the screen */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #2f2f2f;
+}
+
+/* The Board Container */
+.chessboard {
+    display: grid;
+    grid-template-columns: repeat(8, 60px);
+    grid-template-rows: repeat(8, 60px);
+    border: 5px solid #333;
+}
+
+/* Base style for all squares */
+.chessboard div {
+    width: 60px;
+    height: 60px;
+}
+
+/* Color logic: Using nth-child to create the checkered pattern */
+
+/* Odd rows: odd squares are light, even are dark */
+.chessboard div:nth-child(-n+8):nth-child(odd),
+.chessboard div:nth-child(n+17):nth-child(-n+24):nth-child(odd),
+.chessboard div:nth-child(n+33):nth-child(-n+40):nth-child(odd),
+.chessboard div:nth-child(n+49):nth-child(-n+56):nth-child(odd) {
+    background-color: #eeeed2; /* Light square */
+}
+
+.chessboard div:nth-child(-n+8):nth-child(even),
+.chessboard div:nth-child(n+17):nth-child(-n+24):nth-child(even),
+.chessboard div:nth-child(n+33):nth-child(-n+40):nth-child(even),
+.chessboard div:nth-child(n+49):nth-child(-n+56):nth-child(even) {
+    background-color: #769656; /* Dark square */
+}
+
+/* Even rows: odd squares are dark, even are light */
+.chessboard div:nth-child(n+9):nth-child(-n+16):nth-child(odd),
+.chessboard div:nth-child(n+25):nth-child(-n+32):nth-child(odd),
+.chessboard div:nth-child(n+41):nth-child(-n+48):nth-child(odd),
+.chessboard div:nth-child(n+57):nth-child(-n+64):nth-child(odd) {
+    background-color: #769656; /* Dark square */
+}
+
+.chessboard div:nth-child(n+9):nth-child(-n+16):nth-child(even),
+.chessboard div:nth-child(n+25):nth-child(-n+32):nth-child(even),
+.chessboard div:nth-child(n+41):nth-child(-n+48):nth-child(even),
+.chessboard div:nth-child(n+57):nth-child(-n+64):nth-child(even) {
+    background-color: #eeeed2; /* Light square */
+}
